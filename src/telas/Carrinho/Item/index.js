@@ -5,7 +5,10 @@ import CampoInteiro from "../../../componentes/CampoInteiro";
 
 import estilos from "./estilos";
 
-export default function Item({ nome, preco, descricao, quantidade: quantidadeInicial }) {
+import { actions } from "../../../Store/Carrinho";
+import { useDispatch } from "react-redux";
+
+export default function Item({ nome, preco, descricao, quantidade: quantidadeInicial, index }) {
   const [quantidade, setQuantidade] = useState(quantidadeInicial)
   const [total, setTotal] = useState(preco * quantidadeInicial)
 
@@ -17,6 +20,8 @@ export default function Item({ nome, preco, descricao, quantidade: quantidadeIni
   const calculaTotal = (novaQuantidade) => {
     setTotal(novaQuantidade * preco);
   }
+
+  const dispatch = useDispatch()
 
 
   return <>
@@ -45,7 +50,7 @@ export default function Item({ nome, preco, descricao, quantidade: quantidadeIni
           }</Text>
         </View>
       </View>
-      <Botao valor="Remover ao Carrinho" acao={() => { }} />
+      <Botao valor="Remover ao Carrinho" acao={() => { dispatch(actions.remover(index)) }} />
     </View>
     <View style={estilos.divisor} />
   </>

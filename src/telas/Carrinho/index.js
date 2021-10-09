@@ -1,9 +1,10 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { FlatList, Text, View } from "react-native";
 
 import Item from "./Item";
-import TelaPadrao from "../../componentes/TelaPadrao";
 import StatusCarrinho from "../../componentes/StatusCarrinho";
+
+import { useSelector } from "react-redux";
 
 const servicos = [
   {
@@ -31,13 +32,21 @@ const servicos = [
 ]
 
 export default function Carrinho() {
-  const total = servicos.reduce((soma, { preco, quantidade }) => soma + (preco * quantidade), 0)
-  return <TelaPadrao>
-    <StatusCarrinho total={total} />
-    <FlatList
-      data={servicos}
-      renderItem={({ item }) => <Item {...item} />}
-      keyExtractor={({ id }) => String(id)}
-    />
-  </TelaPadrao>
+  const carrinho = useSelector((state) => state.carrinho.itens)
+  const total = carrinho.reduce((soma, { preco, quantidade }) => soma + (preco * quantidade), 0)
+  if (carrinho.length) {
+    return <>
+      <StatusCarrinho total={total} />
+      <FlatList
+        data={carrinho}
+        renderItem={({ item, index }) => <Item {...item} index={index} />}
+        keyExtractor={({ id }) => String(id)}
+      />
+    </>
+  } else {
+    return <>
+      <StatusCarrinho total={total} />
+      <Text style={{ fontSize: 22 }} if={total < 1}>Carrinho está vazio. Vamos gastar um pouquinho!!</Text>
+    </>
+  }
 }
