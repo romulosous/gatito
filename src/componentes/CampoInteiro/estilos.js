@@ -3,9 +3,10 @@ import { cores } from '../../estilos';
 
 export default StyleSheet.create({
   campo: {
-    height: 25,
-    borderWidth: 1,
-    borderColor: cores.escuro,
+    height: 31,
+    paddingTop: 5,
+    borderWidth: 2,
+    borderColor: '#A050BE',
     textAlign: 'center'
   }
 });

@@ -22,7 +22,7 @@ export default function StatusCarrinho({ total }) {
     <View style={estilos.botao}>
       <Botao valor='Concluir Pedido' invertido acao={() => {
         dispatch(actions.resetar());
-        alert("Ok")
+        alert("Pedido Concluido!")
       }} />
     </View>
   </View>

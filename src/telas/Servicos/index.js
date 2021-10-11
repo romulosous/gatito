@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, KeyboardAvoidingView, Platform, SafeAreaView, StatusBar } from "react-native";
+import { FlatList } from "react-native";
 
-import estilosGlobal from '../../estilos'
 
 import Item from "./Item";
-import TelaPadrao from "../../componentes/TelaPadrao";
 
-import api from "../../services/api";
 
 
 
@@ -33,23 +30,6 @@ const servicos = [
 ]
 
 export default function Servicos() {
-  // const [services, setServices] = useState([])
-
-  // useEffect(() => {
-
-  //   async function loadServices() {
-  //     try {
-  //       const response = await api.get("/servicos");
-  //       setServices(response.data)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-
-  //   loadServices();
-  // }, []);
-
-
 
   return <>
     <FlatList

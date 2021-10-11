@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import Botao from "../../../componentes/Botao";
 import CampoInteiro from "../../../componentes/CampoInteiro";
 
@@ -31,7 +31,6 @@ export default function Item({ id, nome, preco, descricao }) {
 
   const adicionaNoCarrinho = () => {
     dispatch(actions.adicionar({ id, nome, preco, descricao, quantidade }))
-    Alert.alert("Produto Adicionado")
   }
 
   return <>
